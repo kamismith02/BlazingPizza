@@ -1,7 +1,13 @@
 using BlazingPizza.Data;
 using BlazingPizza.Services;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Set the culture to en-US for US currency formatting
+var cultureInfo = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 builder.Services.AddHttpClient();
 builder.Services.AddSqlite<PizzaStoreContext>("Data Source=pizza.db");
